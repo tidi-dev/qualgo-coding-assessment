@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 import { BaseSeeder } from './base.seeder';
 
 export class UserSeeder extends BaseSeeder {
@@ -10,7 +9,7 @@ export class UserSeeder extends BaseSeeder {
     for (let index = 0; index < 3; index++) {
       pTasks[index] = this.prisma.user.create({
         data: {
-          username: faker.internet.userName().toLowerCase(),
+          username: `user${index + 1}`,
           password: hashedPassword,
         },
       });
