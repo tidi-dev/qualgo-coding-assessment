@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mikestead.dotenv",
+    "ashinzekene.nestjs",
+    "abhijoybasak.nestjs-files",
+    "prisma.prisma",
+  ]
+}
