@@ -23,12 +23,12 @@ model User {
 model Message {
   id         String   @id @default(uuid())
   user_id    String
-  room_id    String
+  room_code  String
   content    String
   created_at DateTime @default(now())
 
   user User     @relation(fields: [user_id], references: [id])
-  room ChatRoom @relation(fields: [room_id], references: [id])
+  room ChatRoom @relation(fields: [room_code], references: [code])
 
   @@map("messages")
 }
@@ -36,6 +36,7 @@ model Message {
 model ChatRoom {
   id   String @id @default(uuid())
   name String @unique
+  code String @unique
 
   messages Message[]
 

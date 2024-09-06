@@ -1,20 +1,27 @@
+import { CreateMessageDto, GetMessageDto } from '@libs-common/dtos';
+import { MessageRepository } from '@libs-common/repositories';
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class MessageService {
-  constructor(private prisma: PrismaService) {}
+  private readonly limit_per_page: number;
 
-  async saveMessage(content: string, user_id: string) {
-    return this.prisma.message.create({
-      data: { content, user_id } as any,
-    });
+  constructor(
+    private readonly messageRepository: MessageRepository,
+    private readonly configService: ConfigService,
+  ) {
+    this.limit_per_page = configService.get<number>('LIMIT_PER_PAGE');
   }
 
-  async getMessages() {
-    return this.prisma.message.findMany({
-      include: { user: true },
-      orderBy: { created_at: 'asc' },
+  async create(dto: CreateMessageDto): Promise<void> {
+    await this.messageRepository.createMessage(dto);
+  }
+
+  async getMessages(query: GetMessageDto) {
+    return this.messageRepository.listMessages({
+      ...query,
+      limit: this.limit_per_page,
     });
   }
 }
