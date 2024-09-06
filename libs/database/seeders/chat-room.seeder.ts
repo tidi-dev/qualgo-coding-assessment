@@ -4,7 +4,8 @@ export class ChatRoomSeeder extends BaseSeeder {
   async seedData() {
     await this.prisma.chatRoom.create({
       data: {
-        name: 'default chat room',
+        name: 'Room No1',
+        code: 'room_1',
       },
     });
   }

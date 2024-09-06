@@ -39,26 +39,26 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     console.log('Client disconnected');
   }
 
-  @SubscribeMessage('sendMessage')
-  async handleMessage(
-    @MessageBody() content: string,
-    @ConnectedSocket() socket: Socket,
-  ) {
-    const user = socket.data.user;
-    await this.messageService.saveMessage(content, user.sub);
+  // @SubscribeMessage('sendMessage')
+  // async handleMessage(
+  //   @MessageBody() content: string,
+  //   @ConnectedSocket() socket: Socket,
+  // ) {
+  //   const user = socket.data.user;
+  //   await this.messageService.create(content, user.sub);
 
-    this.server.emit('receiveMessage', { content, user: user.username });
-  }
+  //   this.server.emit('receiveMessage', { content, user: user.username });
+  // }
 
-  @SubscribeMessage('getMessages')
-  async getMessages() {
-    const messages = await this.messageService.getMessages();
-    this.server.emit('receiveMessage', { content: 'ok' });
-    return messages.forEach((msg) => {
-      this.server.emit('receiveMessage', {
-        content: msg.content,
-        created_at: msg.created_at,
-      });
-    });
-  }
+  // @SubscribeMessage('getMessages')
+  // async getMessages() {
+  //   const messages = await this.messageService.getMessages();
+  //   this.server.emit('receiveMessage', { content: 'ok' });
+  //   return messages.forEach((msg) => {
+  //     this.server.emit('receiveMessage', {
+  //       content: msg.content,
+  //       created_at: msg.created_at,
+  //     });
+  //   });
+  // }
 }
