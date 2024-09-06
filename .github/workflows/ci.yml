@@ -33,3 +33,7 @@ jobs:
 
             yarn check:code
 
+    - name: Run unit tests
+            
+      run: yarn test        
+

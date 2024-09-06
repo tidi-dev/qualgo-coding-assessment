@@ -1,5 +1,6 @@
 import { CreateMessageDto, GetMessageDto } from '@libs-common/dtos';
 import { MessageRepository } from '@libs-common/repositories';
+import { ListMessageResponseDto } from '@libs-common/responses';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
@@ -18,7 +19,7 @@ export class MessageService {
     await this.messageRepository.createMessage(dto);
   }
 
-  async getMessages(query: GetMessageDto) {
+  async getMessages(query: GetMessageDto): Promise<ListMessageResponseDto[]> {
     return this.messageRepository.listMessages({
       ...query,
       limit: this.limit_per_page,
