@@ -11,6 +11,8 @@ RUN yarn install
 COPY . .
 
 RUN yarn prisma generate
+RUN yarn db:init
+RUN yarn db:seed
 
 USER node
 

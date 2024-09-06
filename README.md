@@ -1,8 +1,37 @@
 # Qualgo API
+<h1 align="center">
+  <br>
+  NODEJS CODING ASSESSMENT
+  <br>
+</h1>
 
-This is the Back End
+[![forthebadge](https://forthebadge.com/images/badges/code-done-bugs-none.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-## Stacks
+[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)](https://github.com/Ileriayo/markdown-badges)
+[![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+
+&nbsp;
+
+# Table of Contents
+
+[Stack](#stacks)
+
+[Recommended Tools](#recommended-tools)
+
+[Installation](#installation)
+
+[Setup](#setup)
+
+[How to Test](#how-to-test)
+
+---
+
+# Stack
 
 - Typescript [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
 
@@ -18,150 +47,44 @@ This is the Back End
 
 - Swagger [https://docs.nestjs.com/openapi/introduction](https://docs.nestjs.com/openapi/introduction)
 
-## Pre Setup
+  
 
-- Required **Node 20** or higher
+# Recommended Tools
 
-- **Tools** are recommended
+Here are some recommended tools that may enhance your productivity and streamline your workflow process:
 
-  - [**Visual Studio Code**](https://code.visualstudio.com/): Completely free and with built-in Git support and huge extension library, it’s widely used, especially by frontend developers.
+- [**Visual Studio Code**](https://code.visualstudio.com/): Completely free and with built-in Git support and huge extension library, it’s widely used, especially by frontend developers.
 
-  - [**Postman**](https://www.postman.com/): API platform for building and using APIs
+- [**Docker Desktop**](https://www.docker.com/products/docker-desktop/): The #1 containerization software for developers and teams
 
-  - [**Table Plus**](https://tableplus.com/): Modern, native, and friendly GUI tool for relational databases
+- [**Postman**](https://www.postman.com/): API platform for building and using APIs
 
-- Make sure to install the [suggested extensions](.vscode/extensions.json)
-
-## Structure
-
-```
-├── app.controller.spec.ts
-├── app.controller.ts
-├── app.module.ts
-├── app.service.ts
-├── common
-│   ├── constants
-│   │   ├── index.ts
-│   │   └── regex.constant.ts
-│   ├── dtos
-│   │   ├── create-inventory.dto.ts
-│   │   └── index.ts
-│   ├── repositories
-│   │   ├── base.repository.ts
-│   │   ├── configuration.repository.ts
-│   │   ├── index.ts
-│   │   ├── inventory.repository.ts
-│   │   └── product-variant.repository.ts
-│   └── responses
-│       ├── create-inventory.response.ts
-│       └── index.ts
-├── config
-│   └── swagger.config.ts
-├── core
-│   └── validators
-│       ├── index.ts
-│       ├── is-existing-configuration.validator.ts
-│       ├── is-existing-id.validator.ts
-│       └── is-unique-imei.validator.ts
-├── database
-│   ├── migrations
-│   │   ├── 20240224114443_init
-│   │   │   └── migration.sql
-│   │   └── migration_lock.toml
-│   ├── schema.prisma
-│   ├── seed.ts
-│   └── seeders
-│       └── dummy.data.ts
-├── inventory
-│   ├── inventory.controller.spec.ts
-│   ├── inventory.controller.ts
-│   ├── inventory.module.ts
-│   ├── inventory.service.spec.ts
-│   └── inventory.service.ts
-├── main.ts
-└── prisma
-    ├── prisma.module.ts
-    └── prisma.service.ts
-
-15 directories, 33 files
-```
-
-The project organizes its main folders within `/src`, encompassing essential directories such as `common`, `core`, `config`, `database`, and `prisma`.
-
-Additionally, it incorporates several model-related folders, including `inventory`.
-
-## Setup
-
-```bash
-# copy & paste .env.local .env
-
-cp .env.local .env
-```
-
-Please refrain from editing the MYSQL settings already present in `.env.local` to avoid potential errors.
-
-```bash
-
-# install required packages
-
-yarn install
-
-```
-
-```bash
-
-# init database schema
-
-yarn db:init
-
-```
-
-```bash
-
-# seed dummy data
-
-yarn db:seed
-
-```
-
-```bash
-
-# reset data and create new dummy data
-
-yarn db:reset
-
-# to reset data without creating new dummy data, add `--skip-seed`
-
-yarn db:reset --skip-seed
-
-```
-
-```bash
-
-# start docker in detach mode
-
-docker compose up database -d
-
-```
-
-## API
-
-```bash
-Endpoint: POST localhost:3001/inventory
-Payload:
-{
-    "product_model_id": "786497e7-f560-41e3-9e09-f106d563af42", // replace with real id from database
-    "price": 123,
-    "imei": "59-266528-296802-8",
-    "configuration": {
-        "ram": 32,
-        "color": "Black",
-        "storage_capacity": "512",
-        "os_version": "iOS 16"
-    },
-    "quantity": 10
-}
-```
+- [**Table Plus**](https://tableplus.com/): Modern, native, and friendly GUI tool for relational databases
 
 
-* [**Generate JWT_SECRET**](docs/jwt-secret-generating.md): on how to generate JWT_SECRET to use local
+
+# Introduction
+
+- [**Code_base*](docs/code_base.md)
+
+
+
+# Installation
+
+- [**Install on MacOS**](docs/macos.md): on how to setup local environment on MacOS
+
+
+
+# Setup
+
+- [**Setup**](docs/setup.md): on how to setup local environment
+
+
+
+# How to test
+
+- [**Test**](docs/how-to-test.md): on how to test on local environment
+
+
+
+# How to run unit tests
