@@ -12,7 +12,7 @@ export class AuthController {
   @Post('login')
   @Public()
   @ApiOkResponse({ type: UserLoginResponseDto, status: HttpStatus.CREATED })
-  loginAdmin(@Body() loginDto: UserLoginDto): any {
+  login(@Body() loginDto: UserLoginDto): Promise<{ access_token: string }> {
     return this.authService.login(loginDto);
   }
 }

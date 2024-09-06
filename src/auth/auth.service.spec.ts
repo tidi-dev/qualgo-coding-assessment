@@ -1,14 +1,17 @@
-// auth.service.spec.ts
+import { UserService } from '@/user/user.service';
+import { UserLoginDto } from '@libs-common/dtos';
+import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
-import { UserService } from '@/user/user.service';
-import { JwtService } from '@nestjs/jwt';
-import { UserLoginDto } from '@libs-common/dtos';
 
 describe('AuthService', () => {
   let authService: AuthService;
   let userService: UserService;
   let jwtService: JwtService;
+  const mockUser = {
+    id: '1b3b66d9-2a53-4733-98a8-770d22fe4e82',
+    username: 'testuser',
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -17,13 +20,13 @@ describe('AuthService', () => {
         {
           provide: UserService,
           useValue: {
-            validateUser: jest.fn(),  // Mock UserService validateUser method
+            validateUser: jest.fn(),
           },
         },
         {
           provide: JwtService,
           useValue: {
-            sign: jest.fn(),  // Mock JwtService sign method
+            sign: jest.fn(),
           },
         },
       ],
@@ -39,36 +42,40 @@ describe('AuthService', () => {
   });
 
   it('should return an access token when login is successful', async () => {
-    // Arrange
-    const loginDto: UserLoginDto = { username: 'testuser', password: 'testpass' };
-    const mockUser = { id: 1, username: 'testuser' };
-    
-    // Mock the behavior of userService and jwtService
+    const loginDto: UserLoginDto = {
+      username: 'testuser',
+      password: 'testpass',
+    };
+
     jest.spyOn(userService, 'validateUser').mockResolvedValue(mockUser);
     jest.spyOn(jwtService, 'sign').mockReturnValue('signed-token');
 
-    // Act
     const result = await authService.login(loginDto);
 
-    // Assert
-    expect(userService.validateUser).toHaveBeenCalledWith('testuser', 'testpass');
+    expect(userService.validateUser).toHaveBeenCalledWith(
+      'testuser',
+      'testpass',
+    );
     expect(jwtService.sign).toHaveBeenCalledWith({
       username: 'testuser',
-      sub: 1,
+      sub: '1b3b66d9-2a53-4733-98a8-770d22fe4e82',
     });
     expect(result).toEqual({ access_token: 'signed-token' });
   });
 
   it('should throw an error if validateUser fails (user not found)', async () => {
-    // Arrange
-    const loginDto: UserLoginDto = { username: 'invaliduser', password: 'invalidpass' };
-    
-    // Mock validateUser to return null (user not found)
+    const loginDto: UserLoginDto = {
+      username: 'invaliduser',
+      password: 'invalidpass',
+    };
+
     jest.spyOn(userService, 'validateUser').mockResolvedValue(null);
 
-    // Act and Assert
     await expect(authService.login(loginDto)).rejects.toThrow();
-    expect(userService.validateUser).toHaveBeenCalledWith('invaliduser', 'invalidpass');
-    expect(jwtService.sign).not.toHaveBeenCalled();  // jwtService.sign should not be called if user is invalid
+    expect(userService.validateUser).toHaveBeenCalledWith(
+      'invaliduser',
+      'invalidpass',
+    );
+    expect(jwtService.sign).not.toHaveBeenCalled();
   });
 });

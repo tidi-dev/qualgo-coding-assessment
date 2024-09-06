@@ -1,4 +1,5 @@
 import { CreateMessageDto, GetMessageDto } from '@libs-common/dtos';
+import { ListMessageResponseDto } from '@libs-common/responses';
 import { Injectable } from '@nestjs/common';
 import { BaseRepository } from './base.repository';
 
@@ -18,12 +19,15 @@ export class MessageRepository extends BaseRepository {
     });
   }
 
-  async listMessages({ room_code, page, limit }: GetMessageDto) {
+  async listMessages({
+    room_code,
+    page,
+    limit,
+  }: GetMessageDto): Promise<ListMessageResponseDto[]> {
     const skip = (page - 1) * limit;
 
     return this.prisma.message.findMany({
       where: { room_code: room_code },
-
       select: {
         id: true,
         content: true,
