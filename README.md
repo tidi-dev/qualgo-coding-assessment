@@ -5,7 +5,21 @@
   <br>
 </h1>
 
-## Stacks
+[![forthebadge](https://forthebadge.com/images/badges/code-done-bugs-none.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
+[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+[![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)](https://github.com/Ileriayo/markdown-badges)
+
+&nbsp;
+
+# Stack
 
 - Typescript [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
 
@@ -21,6 +35,8 @@
 
 - Swagger [https://docs.nestjs.com/openapi/introduction](https://docs.nestjs.com/openapi/introduction)
 
+  
+
 # Recommended Tools
 
 Here are some recommended tools that may enhance your productivity and streamline your workflow process:
@@ -33,23 +49,18 @@ Here are some recommended tools that may enhance your productivity and streamlin
 
 - [**Table Plus**](https://tableplus.com/): Modern, native, and friendly GUI tool for relational databases
 
+
+
 # Pre Setup
 
 - Required **Node 20** or higher
 
-- **Tools** are recommended
-
-  - [**Visual Studio Code**](https://code.visualstudio.com/): Completely free and with built-in Git support and huge extension library, it’s widely used, especially by frontend developers.
-
-  - [**Postman**](https://www.postman.com/): API platform for building and using APIs
-
-  - [**Table Plus**](https://tableplus.com/): Modern, native, and friendly GUI tool for relational databases
-
 - Make sure to install the [suggested extensions](.vscode/extensions.json)
 
-## Structure
 
-### Overview
+# Introduction
+
+## Codebase structure
 This project is organized into several directories and files, as outlined below:
 
 ```
@@ -135,11 +146,17 @@ Basing on the [**Coding Assessment**](backend-nodejs-coding-assessment.md), the 
 ├── app.module.ts
 
 ```
-## Setup
+
+# Installation
+
+- [**Install on MacOS**](docs/installation/macos.md): on how to setup local environment on MacOS
+
+
+# Run local
+Navigate to the **qualgo** directory.
 
 ```bash
 # copy & paste .env.local .env
-
 cp .env.local .env
 ```
 
@@ -187,25 +204,6 @@ yarn db:reset --skip-seed
 
 docker compose up database -d
 
-```
-
-## API
-
-```bash
-Endpoint: POST localhost:3001/inventory
-Payload:
-{
-    "product_model_id": "786497e7-f560-41e3-9e09-f106d563af42", // replace with real id from database
-    "price": 123,
-    "imei": "59-266528-296802-8",
-    "configuration": {
-        "ram": 32,
-        "color": "Black",
-        "storage_capacity": "512",
-        "os_version": "iOS 16"
-    },
-    "quantity": 10
-}
 ```
 
 
