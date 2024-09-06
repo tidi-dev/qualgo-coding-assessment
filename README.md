@@ -17,6 +17,20 @@
 
 &nbsp;
 
+# Table of Contents
+
+[Stack](#stacks)
+
+[Recommended Tools](#recommended-tools)
+
+[Installation](#installation)
+
+[Setup](#setup)
+
+[How to Test](#how-to-test)
+
+---
+
 # Stack
 
 - Typescript [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
@@ -49,161 +63,28 @@ Here are some recommended tools that may enhance your productivity and streamlin
 
 
 
-# Pre Setup
-
-- Required **Node 20** or higher
-
-- Make sure to install the [suggested extensions](.vscode/extensions.json)
-
-
 # Introduction
 
-## Codebase structure
-
-This project is organized into several directories and files, as outlined below:
-
-```
-├── .github/
-├── docs/
-├── libs/
-├── src/
-├── package.json
-├── README.md
-├── Dockerfile
-├── docker-compose.yml
-
-```
-Among these, the `libs` and `src` directories serve as the two primary components of the project.
+- [**Code_base*](docs/code_base.md)
 
 
-### Source code
-#### libs
-This folder contains three essential subfolders: `common`, `core`, and `database`. The purpose of this design is to serve as a centralized location for all shared code, which can be utilized or implemented across all services and modules within the `src` folder.
-
-This folder contains three essential subfolders: `common`, `core`, and `database`.
-- The `commo`n folder is dedicated to storing code that can be used across the project, including **helpers**, **repositories**, **enum**, **dto** and similar utilities.
-- The `core` folder contains code tailored to specific requirements, such as **validators** and **decorators**, as well as customized or extended code that functions exclusively for certain services or modules.
-- Lastly, the `database` folder serves as the repository for migration files, schema definitions, and seed files."
-
-```
-├── common
-│  ├── constants
-│  ├── dtos
-│  ├── enums
-│  ├── helpers
-│  ├── repositories
-│  └── responses
-├── configs
-├── core
-│  ├── decorators
-│  └── validators
-└── database
-  ├── migrations
-  ├── schema.prisma
-  ├── seed.ts
-  ├── seeder-factory.ts
-  └── seeders
-```
-
----
-
-#### src
-This folder is the heart of the repository, serving as the central hub for all services and modules. It plays a crucial role in managing the business logic, ensuring that all core functionalities are organized and accessible.
-
-Basing on the [**Coding Assessment**](backend-nodejs-coding-assessment.md), the `src` folder will include the following components:
-- `auth` module manages authentication using JSON Web Tokens (JWT) for secure user verification and access control.
-- `message` module handles sending and receiving messages, facilitating communication between users.
-- `prisma` module is responsible for instantiating the Prisma Client and connecting to the database for efficient data access.
-- `user` module validates user information, ensuring compliance with required specifications.
-- `websocket` module adds real-time chat communication as a bonus feature, enhancing user interaction within the application.
-
-```
-├── auth
-│  ├── auth.controller.ts
-│  ├── auth.module.ts
-│  ├── auth.service.spec.ts
-│  ├── auth.service.ts
-│  └── jwt
-│    ├── jwt-auth.guard.ts
-│    └── jwt-auth.strategy.ts
-├── message
-│  ├── message.controller.ts
-│  ├── message.module.ts
-│  ├── message.service.spec.ts
-│  └── message.service.ts
-├── prisma
-│  ├── prisma.module.ts
-│  └── prisma.service.ts
-├── user
-│  ├── user.module.ts
-│  ├── user.service.spec.ts
-│  └── user.service.ts
-└── websocket
-  ├── chat
-  └── websocket.module.ts
-├── main.ts
-├── app.module.ts
-
-```
 
 # Installation
 
 - [**Install on MacOS**](docs/macos.md): on how to setup local environment on MacOS
 
 
-# Run local
-Navigate to the **qualgo** directory.
 
-```bash
-# copy & paste .env.local .env
-cp .env.local .env
-```
+# Setup
 
-Please refrain from editing the MYSQL settings already present in `.env.local` to avoid potential errors.
-
-```bash
-
-# install required packages
-
-yarn install
-
-```
-
-```bash
-
-# init database schema
-
-yarn db:init
-
-```
-
-```bash
-
-# seed dummy data
-
-yarn db:seed
-
-```
-
-```bash
-
-# reset data and create new dummy data
-
-yarn db:reset
-
-# to reset data without creating new dummy data, add `--skip-seed`
-
-yarn db:reset --skip-seed
-
-```
-
-```bash
-
-# start docker in detach mode
-
-docker compose up database -d
-
-```
+- [**Setup**](docs/setup.md): on how to setup local environment
 
 
-* [**Generate JWT_SECRET**](docs/jwt-secret-generating.md): on how to generate JWT_SECRET to use local
+
+# How to test
+
+- [**Test**](docs/how-to-test.md): on how to test on local environment
+
+
+
+# How to run unit tests
