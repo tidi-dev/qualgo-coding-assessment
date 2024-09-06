@@ -5,6 +5,6 @@ export class BaseSeeder {
   constructor(protected prisma: PrismaClient = new PrismaClient()) {}
 
   protected async hashPassword(): Promise<string> {
-    return bcrypt.hash('admin@123', 10);
+    return bcrypt.hashSync('p@ssword', 10);
   }
 }
