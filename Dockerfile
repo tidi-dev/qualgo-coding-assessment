@@ -4,7 +4,7 @@ WORKDIR /usr/src/app/
 
 COPY package.json yarn.lock ./
 
-COPY src/database/schema.prisma src/database/schema.prisma
+COPY libs/database/schema.prisma libs/database/schema.prisma
 
 RUN yarn install
 
