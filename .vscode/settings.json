@@ -9,7 +9,7 @@
   "prettier.arrowParens": "always",
   "prettier.trailingComma": "all",
   "eslint.validate": ["javascript", "typescript"],
-  "editor.rulers": [100],
+  "editor.rulers": [120],
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.detectIndentation": false,

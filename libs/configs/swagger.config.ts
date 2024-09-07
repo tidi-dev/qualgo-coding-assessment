@@ -1,7 +1,7 @@
 import type { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-export function configSwagger(app: INestApplication) {
+export function swaggerConfig(app: INestApplication) {
   const config = new DocumentBuilder()
     .setTitle('Qualgo API')
     .setDescription('This is Qualgo Api')

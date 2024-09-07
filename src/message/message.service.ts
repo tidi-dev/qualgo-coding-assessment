@@ -1,6 +1,13 @@
-import { CreateMessageDto, GetMessageDto } from '@libs-common/dtos';
+import {
+  CreateMessageDto,
+  DeleteMessageDto,
+  GetMessageDto,
+} from '@libs-common/dtos';
 import { MessageRepository } from '@libs-common/repositories';
-import { ListMessageResponseDto } from '@libs-common/responses';
+import {
+  ListAllMessageResponseDto,
+  ListMessageResponseDto,
+} from '@libs-common/responses';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
@@ -24,5 +31,15 @@ export class MessageService {
       ...query,
       limit: this.limit_per_page,
     });
+  }
+
+  async getMessagesInRoom(
+    room_code: string,
+  ): Promise<ListAllMessageResponseDto[]> {
+    return this.messageRepository.listAll(room_code);
+  }
+
+  async deleteMessage(dto: DeleteMessageDto): Promise<void> {
+    await this.messageRepository.deleteMessage(dto);
   }
 }

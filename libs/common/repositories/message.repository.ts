@@ -1,9 +1,14 @@
-import { CreateMessageDto, GetMessageDto } from '@libs-common/dtos';
+import {
+  CreateMessageDto,
+  DeleteMessageDto,
+  GetMessageDto,
+} from '@libs-common/dtos';
+import { ForbiddenExceptionMessageEnum } from '@libs-common/enums';
 import {
   ListAllMessageResponseDto,
   ListMessageResponseDto,
 } from '@libs-common/responses';
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { BaseRepository } from './base.repository';
 
 @Injectable()
@@ -49,7 +54,7 @@ export class MessageRepository extends BaseRepository {
 
   async listAll(room_code: string): Promise<ListAllMessageResponseDto[]> {
     return this.prisma.message.findMany({
-      where: { room_code: 'room_1' },
+      where: { room_code },
       select: {
         content: true,
         user: {
@@ -62,15 +67,23 @@ export class MessageRepository extends BaseRepository {
     });
   }
 
-  async deleteMessage(user_id: string, message_id: string) {
-    const message = await this.prisma.message.findUnique({
-      where: { id: message_id },
-    });
-
-    if (!message || message.user_id !== user_id) {
-      throw new Error('Message not found or not authorized to delete');
+  async deleteMessage({
+    user_id,
+    message_id,
+  }: DeleteMessageDto): Promise<void> {
+    try {
+      await this.prisma.message.delete({
+        where: {
+          id_user_id: {
+            id: message_id,
+            user_id,
+          },
+        },
+      });
+    } catch (error) {
+      throw new ForbiddenException(
+        ForbiddenExceptionMessageEnum.NOT_ALLOWED_TO_DELETE_MESSAGE,
+      );
     }
-
-    return this.prisma.message.delete({ where: { id: message_id } });
   }
 }
