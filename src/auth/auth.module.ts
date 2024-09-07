@@ -18,7 +18,7 @@ import { JwtAuthStrategy } from './jwt/jwt-auth.strategy';
           global: true,
           secret: configService.get<string>('JWT_SECRET'),
           signOptions: {
-            expiresIn: '10m',
+            expiresIn: '365d',
           },
         };
       },

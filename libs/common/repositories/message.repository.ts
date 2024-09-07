@@ -1,5 +1,8 @@
 import { CreateMessageDto, GetMessageDto } from '@libs-common/dtos';
-import { ListMessageResponseDto } from '@libs-common/responses';
+import {
+  ListAllMessageResponseDto,
+  ListMessageResponseDto,
+} from '@libs-common/responses';
 import { Injectable } from '@nestjs/common';
 import { BaseRepository } from './base.repository';
 
@@ -27,7 +30,7 @@ export class MessageRepository extends BaseRepository {
     const skip = (page - 1) * limit;
 
     return this.prisma.message.findMany({
-      where: { room_code: room_code },
+      where: { room_code },
       select: {
         id: true,
         content: true,
@@ -42,5 +45,32 @@ export class MessageRepository extends BaseRepository {
       skip,
       take: +limit,
     });
+  }
+
+  async listAll(room_code: string): Promise<ListAllMessageResponseDto[]> {
+    return this.prisma.message.findMany({
+      where: { room_code: 'room_1' },
+      select: {
+        content: true,
+        user: {
+          select: {
+            username: true,
+          },
+        },
+      },
+      orderBy: { created_at: 'desc' },
+    });
+  }
+
+  async deleteMessage(user_id: string, message_id: string) {
+    const message = await this.prisma.message.findUnique({
+      where: { id: message_id },
+    });
+
+    if (!message || message.user_id !== user_id) {
+      throw new Error('Message not found or not authorized to delete');
+    }
+
+    return this.prisma.message.delete({ where: { id: message_id } });
   }
 }

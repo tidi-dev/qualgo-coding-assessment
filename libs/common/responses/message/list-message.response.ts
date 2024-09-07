@@ -15,3 +15,11 @@ export class ListMessageResponseDto {
     username: string;
   };
 }
+
+export class ListAllMessageResponseDto {
+  content: string;
+
+  user: {
+    username: string;
+  };
+}
