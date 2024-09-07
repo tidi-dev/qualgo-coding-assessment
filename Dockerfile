@@ -4,14 +4,11 @@ WORKDIR /usr/src/app/
 
 COPY package.json yarn.lock ./
 
-COPY libs/database/schema.prisma libs/database/schema.prisma
-
 RUN yarn install
 
 COPY . .
 
 RUN yarn prisma generate
-
 
 USER node
 

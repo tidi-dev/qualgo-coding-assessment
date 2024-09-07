@@ -3,7 +3,7 @@ import { comparePassword } from '@libs-common/helpers';
 import { UserRepository } from '@libs-common/repositories';
 import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { UserService } from './user.service';
 
 jest.mock('@libs-common/helpers', () => ({
