@@ -1,4 +1,4 @@
-import { configSwagger } from '@libs/configs';
+import { swaggerConfig } from '@libs/configs';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { useContainer } from 'class-validator';
@@ -17,7 +17,7 @@ async function bootstrap() {
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
-  configSwagger(app);
+  swaggerConfig(app);
 
   await app.listen(3000);
 }

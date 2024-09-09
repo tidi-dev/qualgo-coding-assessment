@@ -30,6 +30,7 @@ model Message {
   user User     @relation(fields: [user_id], references: [id])
   room ChatRoom @relation(fields: [room_code], references: [code])
 
+  @@unique([id, user_id])
   @@map("messages")
 }
 

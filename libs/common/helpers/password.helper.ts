@@ -4,5 +4,5 @@ export async function comparePassword(
   password: string,
   dbPassword: string,
 ): Promise<boolean> {
-  return bcrypt.compare(password, dbPassword);
+  return !dbPassword || (await bcrypt.compare(password, dbPassword));
 }

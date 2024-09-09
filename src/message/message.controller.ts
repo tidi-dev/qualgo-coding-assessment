@@ -1,9 +1,14 @@
 import { MessageService } from '@/message/message.service';
-import { CreateMessageDto, GetMessageDto } from '@libs-common/dtos';
+import {
+  CreateMessageDto,
+  DeleteMessageDto,
+  GetMessageDto,
+} from '@libs-common/dtos';
 import { ListMessageResponseDto } from '@libs-common/responses';
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Post,
@@ -28,5 +33,11 @@ export class MessageController {
     @Query() query: GetMessageDto,
   ): Promise<ListMessageResponseDto[]> {
     return this.messageService.getMessages(query);
+  }
+
+  @ApiOkResponse({ status: HttpStatus.OK })
+  @Delete()
+  async deleteMessage(@Body() dto: DeleteMessageDto): Promise<void> {
+    await this.messageService.deleteMessage(dto);
   }
 }
