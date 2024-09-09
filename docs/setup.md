@@ -3,28 +3,28 @@
 
 ```bash
 # copy & paste .env.local .env
-cp .env.local .env
-```
-
-Please refrain from editing the MYSQL settings already present in `.env.local` to avoid potential errors.
-All MYSQL keys are sent via email. Please check your email for more details.
-
-```bash
-
-# Seeding data
-```bash
-# generate Prisma Client
-yarn prisma generate
+cp .env.example .env
 ```
 
 ```bash
-# init database schema
-yarn db:init
+# install packagas
+yarn install
+```
+
+> **_NOTE:_**
+
+> Please refrain from editing the MYSQL settings already present in `.env.local` to avoid potential errors.
+
+> All MYSQL keys are sent via email. Please check your email for more details.
+
+```bash
+# start docker in detach mode
+docker compose up --build -d
 ```
 
 ```bash
 # seed dummy data
-yarn db:seed
+yarn db:init && yarn db:seed
 ```
 
 ```bash
@@ -35,15 +35,6 @@ yarn db:reset
 yarn db:reset --skip-seed
 ```
 
-# start docker in detach mode
-```bash
-# start database
-docker compose up -d
-
-# start api
-yarn start:dev
-
 # The api is ready at http://localhost:3000
-```
 
 * [**Generate JWT_SECRET**](./jwt-secret-generating.md): on how to generate JWT_SECRET to use local
