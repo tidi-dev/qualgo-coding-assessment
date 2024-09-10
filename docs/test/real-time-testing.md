@@ -28,7 +28,7 @@ There are some events that can be used for testing
 
 ## Join room event
 
-```bash
+```json
 # When join room (`room_1`). User will received a notification message from system and also broadcast to all users in the room different notification message
 
 # User A join room
@@ -49,7 +49,7 @@ There are some events that can be used for testing
 
 ## Leave room event
 
-```bash
+```json
 # When user leaves room. User will received a notification message from system and also broadcast to all users in the room different notification message
 
 # User A join room
@@ -65,7 +65,7 @@ There are some events that can be used for testing
 
 ## Send message event
 
-```bash
+```json
 # When user send message. The message will broadcast to all users in the room
 
 # Other Users in room
@@ -76,7 +76,7 @@ There are some events that can be used for testing
 
 ## Delete message event
 
-```bash
+```json
 # When user delete message. The notification message will be sent to that user
 
 # Failed to delete message
