@@ -4,6 +4,10 @@
 ```bash
 # copy & paste .env.local .env
 cp .env.example .env
+
+# There are 2 env files (`env` and `env.migration`) which were attached into email, kindly download and move them into the source
+# Remember to rename file: from env.migration -> `.`env.miration
+
 ```
 * [**Generate JWT_SECRET**](./jwt-secret-generating.md): on how to generate JWT_SECRET to use local
 
