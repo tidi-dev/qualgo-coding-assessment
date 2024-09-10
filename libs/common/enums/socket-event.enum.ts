@@ -1,4 +1,5 @@
 export const SocketEventEnum = {
+  CONNECTED: 'connected',
   SYSTEM_MESSAGE: 'system_message',
   SEND_MESSAGE: 'send_message',
   JOIN_ROOM: 'join_room',

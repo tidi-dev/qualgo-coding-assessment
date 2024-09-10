@@ -83,7 +83,8 @@ Here are some recommended tools that may enhance your productivity and streamlin
 
 # How to test
 
-- [**Test**](docs/how-to-test.md): on how to test on local environment
+- [**Test**](docs/test/crud-api-testing.md): on how to test CRUD API
+- [**Test**](docs/test/real-time-testing.md): on how to test Real-time
 
 
 

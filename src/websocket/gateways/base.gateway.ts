@@ -38,7 +38,8 @@ export class BaseGateway {
   async onModuleInit() {
     await this.redis.del(this.roomCode);
   }
-  async connect(@ConnectedSocket() socket: Socket) {
+
+  async handleConnection(socket: Socket) {
     const token = socket.handshake.headers.token as string;
 
     try {
@@ -52,7 +53,7 @@ export class BaseGateway {
 
       socket.data.user = decoded;
 
-      socket.emit('connected', {
+      socket.emit(SocketEventEnum.CONNECTED, {
         message: `Welcome ${socket.data.user.username} to the server`,
       });
       this.logger.log(`Client connected: ${socket.id}`);
@@ -63,7 +64,7 @@ export class BaseGateway {
     }
   }
 
-  async disconnect(@ConnectedSocket() socket: Socket) {
+  async handleDisconnect(socket: Socket) {
     this.logger.log(`Client disconnected: ${socket.id}`);
   }
 
