@@ -1,39 +1,71 @@
 name: Qualgo CI
 
 on:
-    pull_request:
-      types: [ opened, synchronize, reopened ]
-    push:
-        branches:
-            - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
 
 jobs:
-  be-eslint-setup:
+  # 1. Build Job
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install
 
-    - name: Install dependencies
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      run: yarn install
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install   
 
-    - name: Check code format
+      - name: Lint the code
+        run: yarn lint-staged -q
 
-      run: |
-            yarn lint-staged -q
+      - name: Check code format
+        run: yarn check:code
 
-            yarn check:code
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Run unit tests
-            
-      run: yarn test        
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install  
 
+      - name: Run unit tests
+        run: yarn test
+
+  deploy:
+    needs: [build, lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        run: echo "Deploy to ARC"
