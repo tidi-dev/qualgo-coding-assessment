@@ -4,8 +4,6 @@
 
 ## The default chat room code is "room_1"
 
-## For testing via Restful API
-
 There are some events that can be used for testing
 
 - `connected`: client successfully establishes a connection to the Socket.IO server.
