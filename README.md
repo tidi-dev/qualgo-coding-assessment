@@ -27,7 +27,7 @@
 
 [Recommended Tools](#recommended-tools)
 
-[Code_Base](#recommended-tools)
+[Code Base](#recommended-tools)
 
 [Installation](#installation)
 
@@ -71,7 +71,7 @@ Here are some recommended tools that may enhance your productivity and streamlin
 
 # Code Base
 
-- [**Code_base**](docs/code_base.md)
+- [**Code base**](docs/code-base.md)
 
 
 # Installation
