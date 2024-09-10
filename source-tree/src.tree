@@ -1,0 +1,33 @@
+├── app.module.ts
+├── auth
+│  ├── auth.controller.ts
+│  ├── auth.module.ts
+│  ├── auth.service.spec.ts
+│  ├── auth.service.ts
+│  └── jwt
+│    ├── jwt-auth.guard.ts
+│    └── jwt-auth.strategy.ts
+├── database
+│  ├── migrations
+│  │  └── 20240906120303_init
+│  └── seeders
+├── main.ts
+├── message
+│  ├── message.controller.ts
+│  ├── message.module.ts
+│  ├── message.service.spec.ts
+│  └── message.service.ts
+├── prisma
+│  ├── prisma.module.ts
+│  └── prisma.service.ts
+├── user
+│  ├── user.module.ts
+│  ├── user.service.spec.ts
+│  └── user.service.ts
+└── websocket
+  ├── gateways
+  │  └── base.gateway.ts
+  ├── services
+  │  ├── chat.service.ts
+  │  └── room.service.ts
+  └── websocket.module.ts

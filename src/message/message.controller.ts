@@ -15,9 +15,10 @@ import {
   Query,
   Req,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('messages')
+@ApiTags('messages')
 export class MessageController {
   constructor(private readonly messageService: MessageService) {}
 
