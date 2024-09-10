@@ -3,6 +3,8 @@
 API: `http://localhost:3000`
 SWAGGER: `http://localhost:3000/api`
 
+Postman Collection: `Qualgo API.postman_collection.json`
+
 ## For testing via Restful API
 After finishing the setup process, there are 3 accounts that can be used for testing.
 
