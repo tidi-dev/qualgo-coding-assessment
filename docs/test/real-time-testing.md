@@ -70,7 +70,7 @@ There are some events that can be used for testing
 ## Leave room event
 
 ```json
-# When user leaves room. User will received a notification message from system and also broadcast to all users in the room different notification message
+When user leaves room. User will received a notification message from system and also broadcast to all users in the room different notification message
 
 # User A join room
 ['system_message']{"message":"You left the room room_1","sender":"System"}
@@ -78,7 +78,7 @@ There are some events that can be used for testing
 # Other Users in room
 ['system_message']{"message":"user_1 left the room","sender":"System"}
 
-# After user A left a room, the system will remove the user's ID (decoded from the token) in Redis.
+After user A left a room, the system will remove the user's ID (decoded from the token) in Redis.
 ```
 
 ---
@@ -86,7 +86,7 @@ There are some events that can be used for testing
 ## Send message event
 
 ```json
-# When user send message. The message will broadcast to all users in the room
+When user send message. The message will broadcast to all users in the room
 
 # Other Users in room
 ['send_message']{"user_1":"aloha"}
@@ -97,7 +97,7 @@ There are some events that can be used for testing
 ## Delete message event
 
 ```json
-# When user delete message. The notification message will be sent to that user
+When user delete message. The notification message will be sent to that user
 
 # Failed to delete message
 ['system_message']{"message":"Error 123123123 deleted","sender":"System"}
