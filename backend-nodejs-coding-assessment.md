@@ -9,18 +9,18 @@ Take on the challenge of developing a chat server system in node.js, enabling us
 ## Project features
 
 ### Mandatory:
-- User authentication with basic username/password login. The credentials can be hardcoded.
-- Creation of a single chat room upon server startup. No need to create multiple rooms.
-- Persistent storage of chat messages in a Database.
-- Sending and receiving messages in the chat room. The client must be able to fetch the room messages
-- RESTful endpoints for message sending, and message retrieval.
-- Unit testing
+- [x] User authentication with basic username/password login. The credentials can be hardcoded.
+- [x] Creation of a single chat room upon server startup. No need to create multiple rooms.
+- [x] Persistent storage of chat messages in a Database.
+- [x] Sending and receiving messages in the chat room. The client must be able to fetch the room messages
+- [x] RESTful endpoints for message sending, and message retrieval.
+- [x] Unit testing
 
 ### Bonus:
-- WebSocket support for real-time chat communication instead of REST API.
-- Deletion of messages by clients.
-- CI/CD skeleton
-- Server scalability
+- [x] WebSocket support for real-time chat communication instead of REST API.
+- [x] Deletion of messages by clients.
+- [x] CI/CD skeleton
+- [ ] Server scalability *TODO*
 
 ## How to submit your work
 - Start by creating a new Git repository on a platform like GitHub, GitLab, or Bitbucket (all the code is your IP)
