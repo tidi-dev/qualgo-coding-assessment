@@ -65,8 +65,7 @@ Here are some recommended tools that may enhance your productivity and streamlin
 
 # Introduction
 
-- [**Code_base*](docs/code_base.md)
-
+- [**Code_base*](docs/code-base.md)
 
 
 # Installation

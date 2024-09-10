@@ -1,0 +1,55 @@
+├── common
+│  ├── dtos
+│  │  ├── auth
+│  │  │  └── payload.dto.ts
+│  │  ├── index.ts
+│  │  ├── message
+│  │  │  ├── create-message.dto.ts
+│  │  │  ├── delete-message.dto.ts
+│  │  │  └── get-message.dto.ts
+│  │  └── user
+│  │    └── user-login.dto.ts
+│  ├── enums
+│  │  ├── error-message.enum.ts
+│  │  ├── index.ts
+│  │  └── socket-event.enum.ts
+│  ├── helpers
+│  │  ├── index.ts
+│  │  └── password.helper.ts
+│  ├── repositories
+│  │  ├── base.repository.ts
+│  │  ├── chat-room.repository.ts
+│  │  ├── index.ts
+│  │  ├── message.repository.ts
+│  │  └── user.repository.ts
+│  └── responses
+│    ├── index.ts
+│    ├── message
+│    │  └── list-message.response.ts
+│    └── user
+│      ├── user-login.response.ts
+│      └── user-validate.response.ts
+├── configs
+│  ├── index.ts
+│  ├── redis.config.ts
+│  └── swagger.config.ts
+├── core
+│  ├── decorators
+│  │  ├── index.ts
+│  │  └── public.decorator.ts
+│  └── validators
+│    ├── index.ts
+│    └── is-existing-room.validator.ts
+└── database
+  ├── migrations
+  │  ├── 20240909183221_init
+  │  │  └── migration.sql
+  │  └── migration_lock.toml
+  ├── schema.prisma
+  ├── seed.ts
+  ├── seeder-factory.ts
+  └── seeders
+    ├── base.seeder.ts
+    ├── chat-room.seeder.ts
+    ├── index.ts
+    └── user.seeder.ts
