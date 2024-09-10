@@ -5,6 +5,7 @@
 # copy & paste .env.local .env
 cp .env.example .env
 ```
+* [**Generate JWT_SECRET**](./jwt-secret-generating.md): on how to generate JWT_SECRET to use local
 
 ```bash
 # install packagas
@@ -36,5 +37,3 @@ yarn db:reset --skip-seed
 ```
 
 # The api is ready at http://localhost:3000
-
-* [**Generate JWT_SECRET**](./jwt-secret-generating.md): on how to generate JWT_SECRET to use local

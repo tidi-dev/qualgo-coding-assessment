@@ -20,15 +20,37 @@ export class ChatService {
     return this.messageService.create(dto);
   }
 
-  async deleteMessage(socket: Socket, messageId: string, roomCode: string) {
-    return this.messageService.deleteMessage({
-      user_id: socket.data.user.sub,
-      message_id: messageId,
-      room_code: roomCode,
+  async deleteMessage(
+    socket: Socket,
+    messageId: string,
+    roomCode: string,
+  ): Promise<void> {
+    try {
+      await this.messageService.deleteMessage({
+        user_id: socket.data.user.sub,
+        message_id: messageId,
+        room_code: roomCode,
+      });
+    } catch (error) {
+      socket.emit(SocketEventEnum.SYSTEM_MESSAGE, {
+        message: `Error ${messageId} deleted`,
+        sender: 'System',
+      });
+
+      return;
+    }
+
+    socket.emit(SocketEventEnum.SYSTEM_MESSAGE, {
+      message: `Message ${messageId} deleted`,
+      sender: 'System',
     });
   }
 
-  async sendMessage(socket: Socket, content: string, roomCode: string) {
+  async sendMessage(
+    socket: Socket,
+    content: string,
+    roomCode: string,
+  ): Promise<void> {
     if (!content.trim()) {
       return;
     }

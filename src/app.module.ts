@@ -12,7 +12,6 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtAuthGuard } from './auth/jwt/jwt-auth.guard';
-import { ChatRoomModule } from './chat-room/chat-room.module';
 import { MessageModule } from './message/message.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
@@ -35,7 +34,6 @@ import { WebsocketModule } from './websocket/websocket.module';
     MessageModule,
     UserModule,
     WebsocketModule,
-    ChatRoomModule,
   ],
   controllers: [],
   providers: [

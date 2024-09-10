@@ -73,11 +73,6 @@ This monorepo is using `yarn` as it's package manager, for start installing it w
 npm install -g yarn
 ```
 
-```bash
-# install packages
-Yarn install
-```
-
 ## Docker Desktop
 
 Please download the version that is compatible with your chip (Intel vs Apple silicon).

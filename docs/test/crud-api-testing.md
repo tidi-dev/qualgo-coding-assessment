@@ -1,4 +1,4 @@
-#How to test locally
+# How to test locally
 
 API: `http://localhost:3000`
 
@@ -61,7 +61,7 @@ PAYLOAD
 
 ## Fetch messages
 
-API: POST `http://localhost:3000/messages?room_code=room_1&page=1`
+API: GET `http://localhost:3000/messages?room_code=room_1&page=1`
 
 RESPONSE
 ```json
@@ -87,4 +87,17 @@ RESPONSE
 # By default, API will response only 15 messages per page
 ```
 
-## For testing real-time chat via Socket
+---
+
+## Delete messages
+
+API: DELETE `http://localhost:3000/messages`
+
+PAYLOAD
+```json
+{
+    "user_id": "5aebe15b-a6b8-47e8-ad4d-eb132cdb705a",
+    "message_id": "5aebe15b-a6b8-47e8-ad4d-eb132cdb705a",
+    "room_code": "room_1"
+}
+```
