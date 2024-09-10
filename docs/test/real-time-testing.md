@@ -38,8 +38,8 @@ There are some events that can be used for testing
 
 ## Connected event
 
-```json
-# When user successfully connected to server. User will received a welcomed message from system
+```bash
+> When user successfully connected to server. User will received a welcomed message from system
 
 ['connected']{"message":"Welcome user_1 to the server"}
 ```
@@ -48,8 +48,8 @@ There are some events that can be used for testing
 
 ## Join room event
 
-```json
-# When join room (`room_1`). User will received a notification message from system and also broadcast to all users in the room different notification message
+```bash
+> When join room (`room_1`). User will received a notification message from system and also broadcast to all users in the room different notification message
 
 # User A join room
 ['system_message']{"message":"You joined the room","sender":"System"}
@@ -57,7 +57,7 @@ There are some events that can be used for testing
 # Other Users in room
 ['system_message']{"message":"user_2 joined the room","sender":"System"}
 
-# After user A joins a room, the system will cache the user's ID (decoded from the token) in Redis and then retrieve all the messages from that room.
+> After user A joins a room, the system will cache the user's ID (decoded from the token) in Redis and then retrieve all the messages from that room.
 
 # If user A already joined the room, the system will not cache the user's ID in Redis again and send a notification message.
 ['system_message']{"message":"You are already in room room_1","sender":"System"}
@@ -69,8 +69,8 @@ There are some events that can be used for testing
 
 ## Leave room event
 
-```json
-When user leaves room. User will received a notification message from system and also broadcast to all users in the room different notification message
+```bash
+> When user leaves room. User will received a notification message from system and also broadcast to all users in the room different notification message
 
 # User A join room
 ['system_message']{"message":"You left the room room_1","sender":"System"}
@@ -78,15 +78,15 @@ When user leaves room. User will received a notification message from system and
 # Other Users in room
 ['system_message']{"message":"user_1 left the room","sender":"System"}
 
-After user A left a room, the system will remove the user's ID (decoded from the token) in Redis.
+> After user A left a room, the system will remove the user's ID (decoded from the token) in Redis.
 ```
 
 ---
 
 ## Send message event
 
-```json
-When user send message. The message will broadcast to all users in the room
+```bash
+> When user send message. The message will broadcast to all users in the room
 
 # Other Users in room
 ['send_message']{"user_1":"aloha"}
@@ -96,8 +96,8 @@ When user send message. The message will broadcast to all users in the room
 
 ## Delete message event
 
-```json
-When user delete message. The notification message will be sent to that user
+```bash
+> When user delete message. The notification message will be sent to that user
 
 # Failed to delete message
 ['system_message']{"message":"Error 123123123 deleted","sender":"System"}
