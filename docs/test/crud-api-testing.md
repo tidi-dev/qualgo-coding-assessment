@@ -1,6 +1,7 @@
 # How to test locally
 
 API: `http://localhost:3000`
+
 SWAGGER: `http://localhost:3000/api`
 
 Postman Collection: `Qualgo API.postman_collection.json`
@@ -18,7 +19,7 @@ After finishing the setup process, there are 3 accounts that can be used for tes
   "password": "p@ssword"
 },
 {
-  "username": "user_2",
+  "username": "user_3",
   "password": "p@ssword"
 }
 
